@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.yo.booksystem.controller.BooksManagingController">
+   <children>
+      <SplitPane dividerPositions="0.45484949832775917" layoutX="290.0" layoutY="107.0" orientation="VERTICAL" prefHeight="600.0" prefWidth="900.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+               <children>
+                  <SplitPane dividerPositions="0.17406143344709898" layoutX="147.0" layoutY="35.0" orientation="VERTICAL" prefHeight="295.0" prefWidth="898.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <items>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                           <children>
+                              <HBox alignment="CENTER" layoutX="164.0" layoutY="-36.0" prefHeight="42.0" prefWidth="896.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <children>
+                                    <Label text="书名">
+                                       <padding>
+                                          <Insets top="3.0" />
+                                       </padding>
+                                    </Label>
+                                    <TextField fx:id="searchName" />
+                                    <Button mnemonicParsing="false" onAction="#searchBooks" text="查询" />
+                                 </children>
+                              </HBox>
+                           </children>
+                        </AnchorPane>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                           <children>
+                              <TableView fx:id="BookEntityTableView" layoutX="324.0" layoutY="19.0" prefHeight="216.0" prefWidth="896.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                <columns>
+                                  <TableColumn fx:id="booknameColumn" prefWidth="114.0" text="书本名称" />
+                                  <TableColumn fx:id="descriptionColum" prefWidth="222.0" text="简介" />
+                                    <TableColumn fx:id="authorColum" prefWidth="148.0" text="作者" />
+                                    <TableColumn fx:id="bookcategoryColum" prefWidth="137.0" text="所属种类" />
+                                    <TableColumn fx:id="publisherColumn" prefWidth="122.0" text="出版社" />
+                                    <TableColumn fx:id="remainColum" prefWidth="79.0" text="库存" />
+                                    <TableColumn fx:id="priceColum" prefWidth="73.0" text="价格" />
+                                </columns>
+                                 <columnResizePolicy>
+                                    <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                 </columnResizePolicy>
+                              </TableView>
+                           </children>
+                        </AnchorPane>
+                    </items>
+                  </SplitPane>
+               </children>
+            </AnchorPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+               <children>
+                  <SplitPane dividerPositions="0.6875" layoutX="200.0" layoutY="81.0" prefHeight="322.0" prefWidth="898.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <items>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                           <children>
+                              <BorderPane prefHeight="320.0" prefWidth="612.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <top>
+                                    <GridPane hgap="5.0" prefHeight="90.0" prefWidth="612.0" vgap="5.0" BorderPane.alignment="CENTER">
+                                      <columnConstraints>
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                      </columnConstraints>
+                                      <rowConstraints>
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                      </rowConstraints>
+                                       <children>
+                                          <Label text="书本名称：" />
+                                          <Label text="所属种类：" GridPane.rowIndex="1" />
+                                          <Label text="价格：" GridPane.columnIndex="2" />
+                                          <Label text="出版社：" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                                          <Label text="作者：" GridPane.columnIndex="4" />
+                                          <Label text="书本图片：" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+                                          <TextField fx:id="bookname" GridPane.columnIndex="1" />
+                                          <TextField fx:id="price" GridPane.columnIndex="3" />
+                                          <TextField fx:id="author" GridPane.columnIndex="5" />
+                                          <ComboBox fx:id="bookcategoryCom" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                          <ComboBox fx:id="publisherCom" prefWidth="150.0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                                          <Button mnemonicParsing="false" onAction="#selectPicture" text="请选择文件" GridPane.columnIndex="5" GridPane.rowIndex="1" />
+                                       </children>
+                                    </GridPane>
+                                 </top>
+                                 <center>
+                                    <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                                       <children>
+                                          <Label text="书本简介：" />
+                                          <TextArea fx:id="description" prefHeight="130.0" prefWidth="514.0" />
+                                       </children>
+                                    </HBox>
+                                 </center>
+                                 <bottom>
+                                    <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="50.0" BorderPane.alignment="CENTER">
+                                       <children>
+                                          <Button mnemonicParsing="false" onAction="#saveBook" text="保存" />
+                                          <Button mnemonicParsing="false" onAction="#clear" text="清空" />
+                                       </children>
+                                    </HBox>
+                                 </bottom>
+                              </BorderPane>
+                           </children>
+                        </AnchorPane>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                           <children>
+                              <ImageView fx:id="img" fitHeight="150.0" fitWidth="200.0" layoutX="38.0" layoutY="74.0" pickOnBounds="true" preserveRatio="true" />
+                           </children></AnchorPane>
+                    </items>
+                  </SplitPane>
+               </children>
+            </AnchorPane>
+        </items>
+      </SplitPane>
+   </children>
+</AnchorPane>

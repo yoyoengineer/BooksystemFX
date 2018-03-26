@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yo.booksystem.dao.PublisherMapper" >
+  <resultMap id="BaseResultMap" type="com.yo.booksystem.model.Publisher" >
+    <constructor >
+      <idArg column="pubName" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="pubConnector" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="phoneNum" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="description" jdbcType="VARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    pubName, pubConnector, phoneNum, description
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from publisher
+    where pubName = #{pubname,jdbcType=VARCHAR}
+  </select>
+    <select id="selectByPubname" resultType="com.yo.booksystem.model.Publisher">
+      select
+      <include refid="Base_Column_List" />
+      from publisher
+      WHERE pubName LIKE #{pubName}
+    </select>
+  <select id="selectAll" resultType="com.yo.booksystem.model.Publisher">
+    select
+    <include refid="Base_Column_List" />
+    from publisher
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from publisher
+    where pubName = #{pubname,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.yo.booksystem.model.Publisher" >
+    insert into publisher (pubName, pubConnector, phoneNum, 
+      description)
+    values (#{pubname,jdbcType=VARCHAR}, #{pubconnector,jdbcType=VARCHAR}, #{phonenum,jdbcType=VARCHAR}, 
+      #{description,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yo.booksystem.model.Publisher" >
+    insert into publisher
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="pubname != null" >
+        pubName,
+      </if>
+      <if test="pubconnector != null" >
+        pubConnector,
+      </if>
+      <if test="phonenum != null" >
+        phoneNum,
+      </if>
+      <if test="description != null" >
+        description,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="pubname != null" >
+        #{pubname,jdbcType=VARCHAR},
+      </if>
+      <if test="pubconnector != null" >
+        #{pubconnector,jdbcType=VARCHAR},
+      </if>
+      <if test="phonenum != null" >
+        #{phonenum,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null" >
+        #{description,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yo.booksystem.model.Publisher" >
+    update publisher
+    <set >
+      <if test="pubconnector != null" >
+        pubConnector = #{pubconnector,jdbcType=VARCHAR},
+      </if>
+      <if test="phonenum != null" >
+        phoneNum = #{phonenum,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null" >
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where pubName = #{pubname,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yo.booksystem.model.Publisher" >
+    update publisher
+    set pubConnector = #{pubconnector,jdbcType=VARCHAR},
+      phoneNum = #{phonenum,jdbcType=VARCHAR},
+      description = #{description,jdbcType=VARCHAR}
+    where pubName = #{pubname,jdbcType=VARCHAR}
+  </update>
+</mapper>

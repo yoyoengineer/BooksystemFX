@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yo.booksystem.dao.BookMapper" >
+  <resultMap id="BaseResultMap" type="com.yo.booksystem.model.Book" >
+    <constructor >
+      <idArg column="bookId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="bookName" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="price" jdbcType="REAL" javaType="java.lang.Float" />
+      <arg column="remain" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="author" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="publisher" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="img" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="description" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="bookCategory" jdbcType="VARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    bookId, bookName, price, remain, author, publisher, img, description, bookCategory
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from book
+    where bookId = #{bookid,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultType="com.yo.booksystem.model.Book">
+    select
+    <include refid="Base_Column_List" />
+    from book
+  </select>
+  <select id="selectByBookname" resultType="com.yo.booksystem.model.Book">
+    select
+    <include refid="Base_Column_List" />
+    from book
+    WHERE bookName LIKE #{bookName}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from book
+    where bookId = #{bookid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.yo.booksystem.model.Book" >
+    insert into book (bookId, bookName, price, 
+      remain, author, publisher, 
+      img, description, bookCategory
+      )
+    values (#{bookid,jdbcType=INTEGER}, #{bookname,jdbcType=VARCHAR}, #{price,jdbcType=REAL}, 
+      #{remain,jdbcType=INTEGER}, #{author,jdbcType=VARCHAR}, #{publisher,jdbcType=VARCHAR}, 
+      #{img,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, #{bookcategory,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.yo.booksystem.model.Book" >
+    insert into book
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="bookid != null" >
+        bookId,
+      </if>
+      <if test="bookname != null" >
+        bookName,
+      </if>
+      <if test="price != null" >
+        price,
+      </if>
+      <if test="remain != null" >
+        remain,
+      </if>
+      <if test="author != null" >
+        author,
+      </if>
+      <if test="publisher != null" >
+        publisher,
+      </if>
+      <if test="img != null" >
+        img,
+      </if>
+      <if test="description != null" >
+        description,
+      </if>
+      <if test="bookcategory != null" >
+        bookCategory,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="bookid != null" >
+        #{bookid,jdbcType=INTEGER},
+      </if>
+      <if test="bookname != null" >
+        #{bookname,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null" >
+        #{price,jdbcType=REAL},
+      </if>
+      <if test="remain != null" >
+        #{remain,jdbcType=INTEGER},
+      </if>
+      <if test="author != null" >
+        #{author,jdbcType=VARCHAR},
+      </if>
+      <if test="publisher != null" >
+        #{publisher,jdbcType=VARCHAR},
+      </if>
+      <if test="img != null" >
+        #{img,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null" >
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="bookcategory != null" >
+        #{bookcategory,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yo.booksystem.model.Book" >
+    update book
+    <set >
+      <if test="bookname != null" >
+        bookName = #{bookname,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null" >
+        price = #{price,jdbcType=REAL},
+      </if>
+      <if test="remain != null" >
+        remain = #{remain,jdbcType=INTEGER},
+      </if>
+      <if test="author != null" >
+        author = #{author,jdbcType=VARCHAR},
+      </if>
+      <if test="publisher != null" >
+        publisher = #{publisher,jdbcType=VARCHAR},
+      </if>
+      <if test="img != null" >
+        img = #{img,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null" >
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="bookcategory != null" >
+        bookCategory = #{bookcategory,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where bookId = #{bookid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yo.booksystem.model.Book" >
+    update book
+    set bookName = #{bookname,jdbcType=VARCHAR},
+      price = #{price,jdbcType=REAL},
+      remain = #{remain,jdbcType=INTEGER},
+      author = #{author,jdbcType=VARCHAR},
+      publisher = #{publisher,jdbcType=VARCHAR},
+      img = #{img,jdbcType=VARCHAR},
+      description = #{description,jdbcType=VARCHAR},
+      bookCategory = #{bookcategory,jdbcType=VARCHAR}
+    where bookId = #{bookid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByBookName">
+    update book
+    set
+      remain = #{remain,jdbcType=INTEGER},
+    where bookName = #{bookName,jdbcType=VARCHAR}
+  </update>
+</mapper>

@@ -1,0 +1,51 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+   <typeAliases>
+      <typeAlias type="com.yo.booksystem.model.Book" alias="Book"/>
+      <typeAlias type="com.yo.booksystem.model.Bookselling" alias="Bookselling"/>
+      <typeAlias type="com.yo.booksystem.model.BooksellingKey" alias="BooksellingKey"/>
+      <typeAlias type="com.yo.booksystem.model.Bookcategory" alias="Category"/>
+      <typeAlias type="com.yo.booksystem.model.Person" alias="Person"/>
+      <typeAlias type="com.yo.booksystem.model.Publisher" alias="Publisher"/>
+      <typeAlias type="com.yo.booksystem.model.Bookin" alias="Bookin"/>
+      <typeAlias type="com.yo.booksystem.model.BookinKey" alias="BookinKey"/>
+   </typeAliases>
+   <!--<properties resource="mysql.properties"/>-->
+   <!--<properties>-->
+      <!--<property name="jdbc.driver" value="com.mysql.jdbc.Driver"/>-->
+      <!--<property name="jdbc.url" value="jdbc:mysql://localhost:3306/booksystemfx"/>-->
+      <!--<property name="jdbc.username" value="root"/>-->
+      <!--<property name="jdbc.password" value="25845652ysjwmmZL"/>-->
+   <!--</properties>-->
+   <environments default = "development">
+      <environment id = "development">
+         <transactionManager type = "JDBC"/>
+
+         <!--<dataSource type = "POOLED">-->
+            <!--<property name = "driver" value = "${jdbc.driver}"/>-->
+            <!--<property name = "url" value = "${jdbc.url}"/>-->
+            <!--<property name = "username" value = "${jdbc.username}"/>-->
+            <!--<property name = "password" value = "${jdbc.password}"/>-->
+         <!--</dataSource>-->
+
+         <dataSource type = "POOLED">
+            <property name = "driver" value = "com.mysql.jdbc.Driver"/>
+            <property name = "url" value = "jdbc:mysql://localhost:3306/booksystemfx"/>
+            <property name = "username" value = "root"/>
+            <property name = "password" value = "25845652ysjwmmZL"/>
+         </dataSource>
+      </environment>
+   </environments>
+	
+   <mappers>
+      <mapper resource = "mapper/BookMapper.xml"/>
+      <mapper resource = "mapper/BooksellingMapper.xml"/>
+      <mapper resource = "mapper/BookcategoryMapper.xml"/>
+      <mapper resource = "mapper/PersonMapper.xml"/>
+      <mapper resource = "mapper/PublisherMapper.xml"/>
+      <mapper resource = "mapper/BookinMapper.xml"/>
+   </mappers>
+
+</configuration>

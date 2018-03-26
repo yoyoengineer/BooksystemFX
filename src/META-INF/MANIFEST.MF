@@ -1,0 +1,5 @@
+Manifest-Version: 1.0
+Class-Path: /lib/mybatis-3.4.1.jar /lib/mybatis-spring-1.3.0.jar /lib/
+ mysql-connector-java-5.1.41.jar
+Main-Class: com.yo.booksystem.MainApp
+

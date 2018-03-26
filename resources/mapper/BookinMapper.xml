@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yo.booksystem.dao.BookinMapper" >
+  <resultMap id="BaseResultMap" type="com.yo.booksystem.model.Bookin" >
+    <constructor >
+      <idArg column="bookName" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <idArg column="indate" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="inNum" jdbcType="INTEGER" javaType="java.lang.Integer" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    bookName, indate, inNum
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.yo.booksystem.model.BookinKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from bookin
+    where bookName = #{bookname,jdbcType=VARCHAR}
+      and indate = #{indate,jdbcType=TIMESTAMP}
+  </select>
+  <select id="selectAll" resultType="com.yo.booksystem.model.Bookin">
+    select
+    <include refid="Base_Column_List" />
+    from bookin
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.yo.booksystem.model.BookinKey" >
+    delete from bookin
+    where bookName = #{bookname,jdbcType=VARCHAR}
+      and indate = #{indate,jdbcType=TIMESTAMP}
+  </delete>
+  <insert id="insert" parameterType="com.yo.booksystem.model.Bookin" >
+    insert into bookin (bookName, indate, inNum
+      )
+    values (#{bookname,jdbcType=VARCHAR}, #{indate,jdbcType=TIMESTAMP}, #{innum,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.yo.booksystem.model.Bookin" >
+    insert into bookin
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="bookname != null" >
+        bookName,
+      </if>
+      <if test="indate != null" >
+        indate,
+      </if>
+      <if test="innum != null" >
+        inNum,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="bookname != null" >
+        #{bookname,jdbcType=VARCHAR},
+      </if>
+      <if test="indate != null" >
+        #{indate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="innum != null" >
+        #{innum,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yo.booksystem.model.Bookin" >
+    update bookin
+    <set >
+      <if test="innum != null" >
+        inNum = #{innum,jdbcType=INTEGER},
+      </if>
+    </set>
+    where bookName = #{bookname,jdbcType=VARCHAR}
+      and indate = #{indate,jdbcType=TIMESTAMP}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yo.booksystem.model.Bookin" >
+    update bookin
+    set inNum = #{innum,jdbcType=INTEGER}
+    where bookName = #{bookname,jdbcType=VARCHAR}
+      and indate = #{indate,jdbcType=TIMESTAMP}
+  </update>
+</mapper>

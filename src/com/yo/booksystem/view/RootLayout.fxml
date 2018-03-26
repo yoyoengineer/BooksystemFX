@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.BorderPane?>
+
+<BorderPane fx:id="mainBox" prefHeight="700.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.yo.booksystem.controller.RootLayoutController">
+   <top>
+      <MenuBar BorderPane.alignment="CENTER">
+        <menus>
+          <Menu mnemonicParsing="false" text="图书进存销系统">
+               <items>
+                  <CheckMenuItem mnemonicParsing="false" onAction="#showBookSellingView" text="图书销售管理" />
+                  <CheckMenuItem mnemonicParsing="false" onAction="#showBookStorageView" text="图书存储管理" />
+                  <CheckMenuItem mnemonicParsing="false" onAction="#showBooksManagingView" text="图书管理" />
+                  <CheckMenuItem mnemonicParsing="false" onAction="#showCategoriesManagingView" text="图书种类管理" />
+                  <CheckMenuItem mnemonicParsing="false" onAction="#showPublishersManagingView" text="出版社管理" />
+               </items></Menu>
+        </menus>
+      </MenuBar>
+   </top>
+</BorderPane>
